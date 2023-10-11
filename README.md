@@ -95,6 +95,7 @@ Exchanges may be centralized (**CEX**), or decentralized (**DEX**), in which cas
 | ![](https://img.shields.io/static/v1?label=Hummingbot&message=BRONZE&color=green) | [VVS Finance](https://docs.hummingbot.org/exchanges/vvs/)                     | AMM DEX |
 | ![](https://img.shields.io/static/v1?label=Hummingbot&message=BRONZE&color=green) | [XSWAP](https://docs.hummingbot.org/exchanges/xswap/)                         | AMM DEX |
 | ![](https://img.shields.io/static/v1?label=Hummingbot&message=BRONZE&color=green) | [WhiteBit](https://docs.hummingbot.org/exchanges/whitebit/)                   | SPOT CEX |
+| ![](https://img.shields.io/static/v1?label=Hummingbot&message=BRONZE&color=green) | [DigiFinex](https://docs.hummingbot.org/exchanges/digifinex/)                 | SPOT CEX |
 
 
 Quarterly [Polls](https://docs.hummingbot.org/governance/polls/) allow the Hummingbot community to vote using HBOT tokens to decide which exchanges should be certified GOLD or SILVER, which means that they are maintained and continually improved by Hummingbot Foundation. In addition, the codebase includes BRONZE exchange connectors that are maintained by community members. See the [Hummingbot documentation](https://docs.hummingbot.org/exchanges) for all exchanges supported.
