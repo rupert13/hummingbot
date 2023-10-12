@@ -9,6 +9,7 @@ from hummingbot.core.web_assistant.connections.data_types import RESTMethod, RES
 from hummingbot.core.web_assistant.connections.rest_connection import RESTConnection
 from hummingbot.core.web_assistant.rest_post_processors import RESTPostProcessorBase
 from hummingbot.core.web_assistant.rest_pre_processors import RESTPreProcessorBase
+from hummingbot.exceptions import UnsupportedContentTypeError
 
 
 class RESTAssistant:
@@ -55,7 +56,16 @@ class RESTAssistant:
             timeout=timeout,
             headers=headers,
         )
-        response_json = await response.json()
+        content_type = response.headers.get('Content-Type', '')
+
+        if 'application/json' in content_type:
+            response_json = await response.json()
+        elif 'text/plain' in content_type:
+            response_text = await response.text()
+            response_json = json.loads(response_text)
+        else:
+            print(f"Unsupported Content-Type: {content_type}")
+            raise UnsupportedContentTypeError(f"Unsupported Content-Type: {content_type}")
         return response_json
 
     async def execute_request_and_get_response(

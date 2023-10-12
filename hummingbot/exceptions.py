@@ -26,3 +26,9 @@ class InvalidScriptModule(HummingbotBaseException):
     """
     The file does not contain a ScriptBase subclass
     """
+
+
+class UnsupportedContentTypeError(HummingbotBaseException):
+    """
+    Response content type is not supported
+    """
