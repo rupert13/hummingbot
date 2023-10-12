@@ -159,9 +159,7 @@ class LatokenExchange(ExchangePyBase):
         symbol = await self.exchange_symbol_associated_to_pair(trading_pair=trading_pair)
 
         quantized_price = self.quantize_order_price(trading_pair=trading_pair, price=price)
-        quantize_amount_price = Decimal("0") if quantized_price.is_nan() else quantized_price
-        quantized_amount = self.quantize_order_amount(
-            trading_pair=trading_pair, amount=amount, price=quantize_amount_price)
+        quantized_amount = self.quantize_order_amount(trading_pair=trading_pair, amount=amount)
         price_str = f"{quantized_price:f}"
         amount_str = f"{quantized_amount:f}"
         type_str = self.latoken_order_type(order_type=order_type)
