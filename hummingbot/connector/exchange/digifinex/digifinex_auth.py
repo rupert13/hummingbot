@@ -66,15 +66,13 @@ class DigifinexAuth():
         return header
 
     def generate_ws_signature(self) -> List[Any]:
-        data = [None] * 3
-        data[0] = self.api_key
-        nonce = int(self.time_patcher.time() * 1000)
-        data[1] = str(nonce)
+        nonce = str(int(self.time_patcher.time() * 1000))
+        signature = base64.b64encode(
+            hmac.new(
+                self.secret_key.encode('utf-8'),
+                nonce.encode('utf-8'),
+                hashlib.sha256
+            ).digest()
+        ).decode('utf-8')
 
-        data[2] = base64.b64encode(hmac.new(
-            self.secret_key.encode('utf-8'),
-            f"{nonce}".encode('utf-8'),
-            hashlib.sha256
-        ).digest())
-
-        return data
+        return [self.api_key, nonce, signature]
