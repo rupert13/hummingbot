@@ -84,7 +84,8 @@ class RESTAssistant:
         headers = headers or {}
 
         local_headers = {
-            "Content-Type": ("application/json" if method != RESTMethod.GET else "application/x-www-form-urlencoded")}
+            "Content-Type": ("application/json" if (method != RESTMethod.GET or "api.latoken.com/v2/auth/order/getOrder" in url)  
+                             else "application/x-www-form-urlencoded")}
         local_headers.update(headers)
 
         data = json.dumps(data) if data is not None else data
